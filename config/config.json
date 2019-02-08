@@ -1,0 +1,10 @@
+{
+  "production": {},
+  "development": {
+    "dbUri": "mongodb://daniel:Daniel1.@ds161315.mlab.com:61315/covela-test"
+  },
+  "test": {
+    "dbUri": "mongodb://localhost/covela-challenge-test",
+    "getNumberOfCharatersPagesPath": "./helpers/getNumberOfCharatersPages"
+  }
+}
