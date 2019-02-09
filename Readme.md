@@ -37,7 +37,13 @@ The tests are testing the function used as helpers and the response from control
 ```sh
 npm run test
 ```
-### Test the endpoints
+### Running locally the project
+
+```sh
+npm run dev
+```
+
+### Use the endpoints
 
 GET to /apps/register for getting a new token
 
