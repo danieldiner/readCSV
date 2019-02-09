@@ -1,5 +1,5 @@
-# Covela challenge scrapping
-> This project is about scrapping data from Naruto wikia character page.
+# Covela test
+> This project is about creating an API with endpoints declared [on this repo](https://github.com/a0nguyen/prueba-tecnica-covela).
 
 ## Getting Started
 
@@ -37,15 +37,15 @@ The tests are testing the function used as helpers and the response from control
 ```sh
 npm run test
 ```
+### Test the endpoints
 
-## Deployment
+GET to /apps/register for getting a new token
 
-This project is actually hosted on heroku.
-more info here :
-https://devcenter.heroku.com/articles/getting-started-with-nodejs
-The job that permits to send a request every day is host on zappier
-ñore info here :
-https://zapier.com/apps/schedule/integrations
+You can use this token in the headers to GET /industries
+GET information of one industry in /industries/:id
+
+The next endpoint will let you update the industries with a CSV uploaded from your device (This endpoint will not require authentication)
+GET /industries/upload/noauth 
 
 
 ## Built With
