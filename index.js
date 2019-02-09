@@ -15,7 +15,7 @@ var csv = require('csv-parse');
 var multer = require('multer');
 var router = express.Router();
 var upload = multer({dest: './uploads/'})
-var cors = require('cors')
+var request = require('request')
 // var obj = csv();
 //Added Daniel
 
@@ -50,6 +50,7 @@ app.get('/industries', async (req, res) => {
     var token = req.get('token')
     var store = await Store.findOne({ token })
     if (!store) {
+      res.render('/apps/register');
       return res.status(401).send()
     }
 
