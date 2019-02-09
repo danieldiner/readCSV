@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <form action="/apps/register" method="POST">
+        <div>
+            <input type="text" name="name" placeholder="name">
+        </div>
+        <div>
+            <input type="text" name="description" placeholder="add a description to register">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+
+    <script>
+
+        $.support.cors = true;
+
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            headers: { "Accept": "application/json" },
+            url: 'http://localhost:5000/industries',
+            crossDomain: true,
+            //    headers: {'Cookie' : 'SESS83c26757d9118c6bafca4e38b2233563=G9oaLEcjP1BPlZQ5E4eSSgu0mfk2WqWrggxLNo5DsLk'},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("token", '1549679576861');
+            },
+            success: function (data, textStatus, jqXHR) {
+                console.log('OK!');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    </script>
+</body>
+
+</html>

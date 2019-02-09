@@ -16,6 +16,7 @@ var multer = require('multer');
 var router = express.Router();
 var upload = multer({dest: './uploads/'})
 var request = require('request')
+
 // var obj = csv();
 //Added Daniel
 
@@ -26,19 +27,33 @@ var PORT = process.env.PORT || 5000
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 app.use(cors())
+app.set('view engine', 'ejs');
 
 var server = app.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
 })
 
+
+app.get('/apps/register',async (req, res) => {
+
+res.render('register')
+
+});
+
 app.post('/apps/register', async (req, res) => {
+  console.log(req.body.name);
+  console.log(req.body.description);
   try {
     var store = await Store.create({
       name: req.params.name,
       description: req.params.description,
       token: new Date().getTime().toString()
     })
-    res.send({ token: store.token })
+    res.set('token', store.token)
+    res.render('upload')
+    // res.send({ token: store.token })
+
+    
 
   } catch (error) {
     res.status(400).send(error)
@@ -74,6 +89,15 @@ app.get('/industries/:id', async (req, res) => {
   var data = await Industry.findById(req.params.id)
   return res.send(data)
 })
+
+
+app.get('/industries/upload/myself', async (req, res) =>  {
+  res.render('upload')
+ 
+
+});
+
+
 
 app.post('/industries/upload', async (req, res) => {
   try {
@@ -131,7 +155,6 @@ app.post('/industries/upload', async (req, res) => {
 
 //
 app.post('/test', upload.single('myfile'), function (req, res){
-
 
  console.log(req.file);
  console.log(req.file.path)
