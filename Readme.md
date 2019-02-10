@@ -1,4 +1,4 @@
-# Covela test
+# Upload CSV
 > This project is about creating an API with endpoints declared [on this repo](https://github.com/a0nguyen/prueba-tecnica-covela).
 
 ## Getting Started
